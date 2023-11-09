@@ -1,0 +1,18 @@
+@startuml
+!include <C4/C4_Container>
+!theme toy
+scale 1.5
+
+Container_Ext(bal, "Balance")
+Container(ui, "WEB UI")
+ContainerQueue(ag, "APIGateway")
+ContainerQueue(bs, "Billing service")
+Container(db, "Локальная БД")
+
+
+Rel_Down(ui, ag, "Сделать HTTP запрос")
+Rel_Down(ag, bs, "Транслировать HTTP запрос")
+Rel_Right(bs, db, "Сохранить переданные транзакции в локальную БД")
+Rel_Up(bal, bs, "Извлечение транзакций")
+
+@enduml

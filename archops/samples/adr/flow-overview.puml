@@ -1,0 +1,15 @@
+@startuml
+autonumber
+actor "Пользователь" as user
+participant "Web UI" as ui
+participant "APIGateway" as ag
+participant "BillingService" as bs
+participant "Balance" as bal
+user -> ui: Получить список транзакций
+ui -> ag: GET /transactions/all
+ag -> bs: Транслирует HTTP запрос
+bs -> bal: Извлечь все транзакции
+bal --> bs: Отправка всех транзакций
+bs -> bs: Сохранение извлеченных транзакций в БД
+bs -> ui: Передача транзакций
+@enduml

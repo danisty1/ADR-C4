@@ -1,0 +1,12 @@
+@startuml
+!include <C4/C4_Context>
+!theme toy
+scale 1.5
+
+System_Ext(bal, "Balance")
+
+System(ui, "WEB UI")
+
+Rel_Down(ui, bal, "Запрашивает список транзакций")
+
+@enduml
